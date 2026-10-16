@@ -1,0 +1,3275 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Si Surat - SDN Cipinang Melayu 03 Pagi</title>
+  
+  <!-- Google Fonts: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <style>
+    :root {
+      --primary: #0284c7;
+      --primary-dark: #0369a1;
+      --primary-light: #e0f2fe;
+      --navy: #0f172a;
+      --navy-light: #1e293b;
+      --navy-card: #1e293b;
+      --accent: #0d9488;
+      --accent-light: #ccfbf1;
+      --warning: #f59e0b;
+      --danger: #ef4444;
+      --success: #10b981;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text-main: #1e293b;
+      --text-muted: #64748b;
+      --border: #e2e8f0;
+      --radius: 14px;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
+      --shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.08), 0 8px 10px -6px rgba(15, 23, 42, 0.04);
+      --shadow-lg: 0 20px 35px -10px rgba(15, 23, 42, 0.15);
+      --sidebar-width: 270px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text-main);
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    /* ===================================================
+       LOADING OVERLAY (Smooth & Professional)
+       =================================================== */
+    #loadingOverlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(15, 23, 42, 0.78);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      z-index: 99999;
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      transition: opacity 0.3s ease;
+    }
+
+    .loader-spinner {
+      width: 60px;
+      height: 60px;
+      border: 4px solid rgba(255, 255, 255, 0.15);
+      border-top-color: #38bdf8;
+      border-right-color: #34d399;
+      border-radius: 50%;
+      animation: spin 0.9s cubic-bezier(0.55, 0.15, 0.45, 0.85) infinite;
+      margin-bottom: 20px;
+    }
+
+    .loader-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      margin-bottom: 6px;
+    }
+
+    .loader-desc {
+      font-size: 0.85rem;
+      color: #94a3b8;
+      text-align: center;
+      max-width: 420px;
+      padding: 0 20px;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    /* ===================================================
+       LOGIN VIEW
+       =================================================== */
+    #loginView {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #090d16 0%, #0f172a 40%, #0369a1 100%);
+      padding: 20px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #loginView::before {
+      content: "";
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(14, 165, 233, 0.25) 0%, rgba(15, 23, 42, 0) 70%);
+      top: -150px;
+      right: -150px;
+      border-radius: 50%;
+    }
+
+    #loginView::after {
+      content: "";
+      position: absolute;
+      width: 450px;
+      height: 450px;
+      background: radial-gradient(circle, rgba(13, 148, 136, 0.2) 0%, rgba(15, 23, 42, 0) 70%);
+      bottom: -150px;
+      left: -150px;
+      border-radius: 50%;
+    }
+
+    .login-card {
+      background: rgba(255, 255, 255, 0.98);
+      border-radius: 24px;
+      padding: 38px 34px;
+      width: 100%;
+      max-width: 430px;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.35);
+      position: relative;
+      z-index: 2;
+      animation: fadeInDown 0.6s ease;
+    }
+
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .login-header {
+      text-align: center;
+      margin-bottom: 26px;
+    }
+
+    .login-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #e0f2fe;
+      color: #0369a1;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+
+    .login-logo {
+      width: 68px;
+      height: 68px;
+      object-fit: contain;
+      margin-bottom: 12px;
+      border-radius: 14px;
+      background: #f1f5f9;
+      padding: 8px;
+      border: 1px solid #e2e8f0;
+    }
+
+    .login-title {
+      font-size: 1.55rem;
+      font-weight: 800;
+      color: #0f172a;
+      letter-spacing: -0.02em;
+    }
+
+    .login-sub {
+      font-size: 0.82rem;
+      color: #64748b;
+      margin-top: 4px;
+      line-height: 1.4;
+    }
+
+    .form-group {
+      margin-bottom: 18px;
+      text-align: left;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: #334155;
+      margin-bottom: 6px;
+    }
+
+    .input-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .input-wrapper i {
+      position: absolute;
+      left: 14px;
+      color: #94a3b8;
+      font-size: 0.95rem;
+      pointer-events: none;
+    }
+
+    .input-field {
+      width: 100%;
+      padding: 12px 14px 12px 42px;
+      border: 1.5px solid #cbd5e1;
+      border-radius: 12px;
+      font-size: 0.9rem;
+      color: #0f172a;
+      background: #ffffff;
+      outline: none;
+      transition: all 0.25s ease;
+    }
+
+    .input-field:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 4px rgba(2, 132, 199, 0.15);
+    }
+
+    .btn-login {
+      width: 100%;
+      background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+      color: white;
+      border: none;
+      padding: 13px;
+      border-radius: 12px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      box-shadow: 0 10px 20px -5px rgba(2, 132, 199, 0.4);
+      transition: all 0.25s ease;
+      margin-top: 20px;
+    }
+
+    .btn-login:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 24px -5px rgba(2, 132, 199, 0.5);
+    }
+
+    .demo-hint {
+      margin-top: 16px;
+      background: #f8fafc;
+      border: 1px dashed #cbd5e1;
+      border-radius: 10px;
+      padding: 10px 14px;
+      font-size: 0.78rem;
+      color: #64748b;
+      text-align: center;
+    }
+
+    .demo-hint strong {
+      color: #0f172a;
+    }
+
+    /* Vercel Status Ribbon on Login */
+    .vercel-bar {
+      margin-top: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .btn-api-config {
+      background: none;
+      border: 1px solid #e2e8f0;
+      background: #f8fafc;
+      padding: 7px 12px;
+      border-radius: 10px;
+      color: #0284c7;
+      font-size: 0.76rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+    }
+
+    .btn-api-config:hover {
+      background: #e0f2fe;
+      border-color: #38bdf8;
+    }
+
+    /* ===================================================
+       MAIN APP LAYOUT
+       =================================================== */
+    #appView {
+      display: none;
+      min-height: 100vh;
+    }
+
+    /* Sidebar Navigation */
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      width: var(--sidebar-width);
+      background: #0f172a;
+      color: #ffffff;
+      z-index: 1000;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 4px 0 25px rgba(0,0,0,0.15);
+    }
+
+    .sidebar-brand {
+      padding: 22px 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .sidebar-logo {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      background: white;
+      padding: 4px;
+      object-fit: contain;
+    }
+
+    .sidebar-brand-text h2 {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: #ffffff;
+      letter-spacing: -0.02em;
+    }
+
+    .sidebar-brand-text p {
+      font-size: 0.7rem;
+      color: #94a3b8;
+      font-weight: 500;
+    }
+
+    .sidebar-menu {
+      flex: 1;
+      overflow-y: auto;
+      padding: 18px 12px;
+      list-style: none;
+    }
+
+    .menu-header {
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #64748b;
+      font-weight: 700;
+      padding: 10px 14px 4px 14px;
+    }
+
+    .menu-item {
+      margin-bottom: 4px;
+    }
+
+    .menu-link {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 11px 14px;
+      color: #cbd5e1;
+      text-decoration: none;
+      border-radius: 10px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+
+    .menu-link i {
+      width: 20px;
+      text-align: center;
+      font-size: 1rem;
+      color: #94a3b8;
+      transition: color 0.2s ease;
+    }
+
+    .menu-link:hover {
+      background: rgba(255, 255, 255, 0.08);
+      color: #ffffff;
+    }
+
+    .menu-link:hover i {
+      color: #38bdf8;
+    }
+
+    .menu-link.active {
+      background: linear-gradient(90deg, #0284c7 0%, #0369a1 100%);
+      color: #ffffff;
+      box-shadow: 0 4px 12px rgba(2, 132, 199, 0.35);
+    }
+
+    .menu-link.active i {
+      color: #ffffff;
+    }
+
+    .sidebar-footer {
+      padding: 16px 14px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(0, 0, 0, 0.2);
+    }
+
+    .user-profile {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .user-avatar {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: #0284c7;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+
+    .user-info h4 {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: #f8fafc;
+    }
+
+    .user-info p {
+      font-size: 0.7rem;
+      color: #94a3b8;
+    }
+
+    .btn-logout {
+      width: 100%;
+      background: rgba(239, 68, 68, 0.15);
+      color: #fca5a5;
+      border: 1px solid rgba(239, 68, 68, 0.3);
+      padding: 9px;
+      border-radius: 8px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: all 0.2s ease;
+    }
+
+    .btn-logout:hover {
+      background: #ef4444;
+      color: white;
+    }
+
+    /* Top App Bar */
+    .main-wrapper {
+      margin-left: var(--sidebar-width);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      transition: margin-left 0.3s ease;
+    }
+
+    .top-header {
+      background: #ffffff;
+      height: 68px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 24px;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 99;
+    }
+
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .btn-menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.25rem;
+      color: #334155;
+      cursor: pointer;
+      padding: 6px;
+    }
+
+    .page-title {
+      font-size: 1.18rem;
+      font-weight: 800;
+      color: #0f172a;
+      letter-spacing: -0.01em;
+    }
+
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .btn-sync {
+      background: #f1f5f9;
+      border: 1px solid #cbd5e1;
+      color: #334155;
+      padding: 8px 14px;
+      border-radius: 10px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      transition: all 0.2s ease;
+    }
+
+    .btn-sync:hover {
+      background: #e2e8f0;
+      color: #0f172a;
+    }
+
+    .btn-sync i.rotating {
+      animation: spin 1s linear infinite;
+    }
+
+    .badge-live {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #ecfdf5;
+      color: #059669;
+      padding: 5px 10px;
+      border-radius: 20px;
+      font-size: 0.72rem;
+      font-weight: 700;
+    }
+
+    .badge-live::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      background: #10b981;
+      border-radius: 50%;
+      box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.3);
+    }
+
+    /* Content Area */
+    .content-area {
+      flex: 1;
+      padding: 24px;
+      max-width: 1400px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    /* ===================================================
+       DASHBOARD OVERVIEW CARDS
+       =================================================== */
+    .welcome-banner {
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 60%, #0369a1 100%);
+      color: white;
+      border-radius: 18px;
+      padding: 28px;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .welcome-text h1 {
+      font-size: 1.45rem;
+      font-weight: 800;
+      margin-bottom: 6px;
+    }
+
+    .welcome-text p {
+      font-size: 0.88rem;
+      color: #94a3b8;
+      max-width: 620px;
+      line-height: 1.5;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 18px;
+      margin-bottom: 28px;
+    }
+
+    .stat-card {
+      background: white;
+      border-radius: var(--radius);
+      padding: 20px;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      transition: all 0.25s ease;
+      cursor: pointer;
+    }
+
+    .stat-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow);
+      border-color: #cbd5e1;
+    }
+
+    .stat-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.35rem;
+      flex-shrink: 0;
+    }
+
+    .stat-icon.blue { background: #e0f2fe; color: #0284c7; }
+    .stat-icon.green { background: #dcfce7; color: #16a34a; }
+    .stat-icon.purple { background: #f3e8ff; color: #9333ea; }
+    .stat-icon.orange { background: #ffedd5; color: #ea580c; }
+
+    .stat-info h3 {
+      font-size: 1.65rem;
+      font-weight: 800;
+      color: #0f172a;
+      line-height: 1.2;
+    }
+
+    .stat-info p {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: #64748b;
+    }
+
+    /* Quick actions */
+    .section-title-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 16px;
+    }
+
+    .section-title {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: #0f172a;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .quick-actions-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+      margin-bottom: 30px;
+    }
+
+    .quick-card {
+      background: white;
+      border-radius: 14px;
+      padding: 18px;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+
+    .quick-card:hover {
+      border-color: var(--primary);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow);
+    }
+
+    .quick-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: #f1f5f9;
+      color: #334155;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.15rem;
+      flex-shrink: 0;
+    }
+
+    .quick-card:hover .quick-icon {
+      background: var(--primary-light);
+      color: var(--primary);
+    }
+
+    .quick-info h4 {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: #0f172a;
+    }
+
+    .quick-info p {
+      font-size: 0.74rem;
+      color: #64748b;
+      margin-top: 2px;
+    }
+
+    /* Forms */
+    .form-card {
+      background: white;
+      border-radius: 18px;
+      padding: 26px;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      margin-bottom: 30px;
+    }
+
+    .form-header-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 22px;
+    }
+
+    .form-header-title {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: #0f172a;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .form-grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .form-grid-3 {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 16px;
+    }
+
+    .textarea-field {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1.5px solid #cbd5e1;
+      border-radius: 12px;
+      font-size: 0.9rem;
+      color: #0f172a;
+      background: #ffffff;
+      outline: none;
+      resize: vertical;
+      min-height: 90px;
+      transition: all 0.25s ease;
+    }
+
+    .textarea-field:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 4px rgba(2, 132, 199, 0.15);
+    }
+
+    /* Dropzone */
+    .file-dropzone {
+      border: 2px dashed #94a3b8;
+      border-radius: 14px;
+      padding: 24px;
+      text-align: center;
+      background: #f8fafc;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      position: relative;
+    }
+
+    .file-dropzone:hover {
+      border-color: var(--primary);
+      background: #f0f9ff;
+    }
+
+    .file-dropzone input[type="file"] {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      cursor: pointer;
+    }
+
+    .dropzone-icon {
+      font-size: 2rem;
+      color: var(--primary);
+      margin-bottom: 10px;
+    }
+
+    .dropzone-text {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: #1e293b;
+    }
+
+    .dropzone-sub {
+      font-size: 0.74rem;
+      color: #64748b;
+      margin-top: 4px;
+    }
+
+    .file-preview-pill {
+      display: none;
+      align-items: center;
+      gap: 10px;
+      background: #e0f2fe;
+      color: #0369a1;
+      padding: 10px 16px;
+      border-radius: 12px;
+      margin-top: 14px;
+      font-size: 0.84rem;
+      font-weight: 600;
+    }
+
+    .btn-remove-file {
+      margin-left: auto;
+      background: none;
+      border: none;
+      color: #ef4444;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    .form-actions {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 12px;
+      margin-top: 26px;
+      padding-top: 18px;
+      border-top: 1px solid var(--border);
+    }
+
+    .btn-secondary {
+      background: #f1f5f9;
+      color: #475569;
+      border: 1px solid #cbd5e1;
+      padding: 11px 20px;
+      border-radius: 10px;
+      font-size: 0.88rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .btn-secondary:hover {
+      background: #e2e8f0;
+      color: #1e293b;
+    }
+
+    .btn-submit {
+      background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+      color: white;
+      border: none;
+      padding: 11px 24px;
+      border-radius: 10px;
+      font-size: 0.88rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 4px 12px rgba(2, 132, 199, 0.35);
+      transition: all 0.2s ease;
+    }
+
+    .btn-submit:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(2, 132, 199, 0.45);
+    }
+
+    /* Filter Bar */
+    .filter-bar {
+      background: white;
+      border-radius: 16px;
+      padding: 18px;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-sm);
+      margin-bottom: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .filter-item {
+      flex: 1;
+      min-width: 170px;
+    }
+
+    .filter-item label {
+      display: block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #64748b;
+      margin-bottom: 5px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .select-field {
+      width: 100%;
+      padding: 10px 14px;
+      border: 1.5px solid #cbd5e1;
+      border-radius: 10px;
+      font-size: 0.86rem;
+      color: #0f172a;
+      background: #ffffff;
+      outline: none;
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+
+    .select-field:focus {
+      border-color: var(--primary);
+    }
+
+    .filter-actions {
+      display: flex;
+      align-items: flex-end;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .btn-filter, .btn-print {
+      background: var(--navy);
+      color: white;
+      border: none;
+      padding: 10px 18px;
+      border-radius: 10px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .btn-print {
+      background: #0d9488;
+    }
+
+    /* Data Table */
+    .table-container {
+      background: white;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-sm);
+      overflow: hidden;
+      margin-bottom: 30px;
+    }
+
+    .custom-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+    }
+
+    .custom-table th {
+      background: #f8fafc;
+      color: #475569;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 14px 18px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .custom-table td {
+      padding: 14px 18px;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.86rem;
+      color: #1e293b;
+      vertical-align: middle;
+    }
+
+    .custom-table tr:hover td {
+      background: #f8fafc;
+    }
+
+    .badge-cat {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 8px;
+      font-size: 0.72rem;
+      font-weight: 700;
+    }
+
+    .badge-cat.masuk { background: #e0f2fe; color: #0284c7; }
+    .badge-cat.keluar { background: #dcfce7; color: #15803d; }
+    .badge-cat.ket-ks { background: #f3e8ff; color: #7e22ce; }
+    .badge-cat.tugas { background: #ffedd5; color: #c2410c; }
+
+    .action-btns {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-action {
+      background: #f1f5f9;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      width: 32px;
+      height: 32px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: #475569;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-size: 0.85rem;
+      text-decoration: none;
+    }
+
+    .btn-action.view:hover { background: #e0f2fe; color: #0284c7; border-color: #0284c7; }
+    .btn-action.delete:hover { background: #fee2e2; color: #ef4444; border-color: #ef4444; }
+
+    /* Mobile Cards */
+    .mobile-cards-list {
+      display: none;
+      flex-direction: column;
+      gap: 14px;
+      padding: 16px;
+    }
+
+    .m-letter-card {
+      background: white;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      padding: 16px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .m-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+
+    .m-card-title {
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: 4px;
+    }
+
+    .m-card-sub {
+      font-size: 0.78rem;
+      color: #64748b;
+      margin-bottom: 12px;
+      line-height: 1.4;
+    }
+
+    .m-card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 10px;
+      border-top: 1px dashed var(--border);
+    }
+
+    .empty-state {
+      padding: 50px 20px;
+      text-align: center;
+      color: #94a3b8;
+    }
+
+    .empty-state i {
+      font-size: 3rem;
+      margin-bottom: 14px;
+      color: #cbd5e1;
+    }
+
+    .empty-state h4 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #475569;
+      margin-bottom: 4px;
+    }
+
+    .settings-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+    }
+
+    .logo-preview-box {
+      width: 100px;
+      height: 100px;
+      border: 2px dashed #cbd5e1;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #f8fafc;
+      overflow: hidden;
+      margin-bottom: 10px;
+    }
+
+    .logo-preview-box img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+
+    /* Print Kop Surat */
+    #printArea {
+      display: none;
+    }
+
+    @media print {
+      body * {
+        visibility: hidden;
+      }
+      #printArea, #printArea * {
+        visibility: visible;
+      }
+      #printArea {
+        display: block !important;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background: white;
+        padding: 20px;
+        color: black;
+      }
+      .kop-wrapper {
+        border-bottom: 3px double #000;
+        padding-bottom: 12px;
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+        gap: 20px;
+      }
+      .kop-logo {
+        width: 80px;
+        height: 80px;
+        object-fit: contain;
+      }
+      .kop-text {
+        flex: 1;
+        text-align: center;
+      }
+      .kop-text h2 {
+        font-size: 1.15rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        margin-bottom: 2px;
+      }
+      .kop-text h1 {
+        font-size: 1.35rem;
+        font-weight: 900;
+        text-transform: uppercase;
+        margin-bottom: 4px;
+      }
+      .kop-text p {
+        font-size: 0.78rem;
+        margin: 1px 0;
+      }
+      .print-title {
+        text-align: center;
+        font-size: 1.1rem;
+        font-weight: 800;
+        text-decoration: underline;
+        margin-bottom: 4px;
+      }
+      .print-sub {
+        text-align: center;
+        font-size: 0.85rem;
+        margin-bottom: 18px;
+      }
+      .print-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.8rem;
+        margin-bottom: 30px;
+      }
+      .print-table th, .print-table td {
+        border: 1px solid #000;
+        padding: 6px 8px;
+      }
+      .print-table th {
+        background-color: #f1f5f9;
+        text-align: center;
+      }
+      .ttd-container {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 40px;
+        page-break-inside: avoid;
+      }
+      .ttd-box {
+        text-align: center;
+        width: 250px;
+        font-size: 0.85rem;
+      }
+      .ttd-space {
+        height: 70px;
+      }
+    }
+
+    /* Modal */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(15, 23, 42, 0.65);
+      backdrop-filter: blur(4px);
+      z-index: 10000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+    }
+
+    .modal-card {
+      background: white;
+      border-radius: 20px;
+      width: 100%;
+      max-width: 620px;
+      box-shadow: var(--shadow-lg);
+      max-height: 90vh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      animation: modalZoom 0.25s ease;
+    }
+
+    @keyframes modalZoom {
+      from { transform: scale(0.92); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    .modal-header {
+      padding: 18px 24px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .modal-header h3 {
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: #0f172a;
+    }
+
+    .btn-close-modal {
+      background: none;
+      border: none;
+      font-size: 1.2rem;
+      color: #94a3b8;
+      cursor: pointer;
+    }
+
+    .modal-body {
+      padding: 24px;
+      overflow-y: auto;
+      flex: 1;
+    }
+
+    .detail-row {
+      display: flex;
+      margin-bottom: 12px;
+      border-bottom: 1px dashed #f1f5f9;
+      padding-bottom: 10px;
+    }
+
+    .detail-label {
+      width: 160px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: #64748b;
+      flex-shrink: 0;
+    }
+
+    .detail-val {
+      font-size: 0.86rem;
+      color: #0f172a;
+      flex: 1;
+      font-weight: 500;
+      word-break: break-word;
+    }
+
+    .modal-footer {
+      padding: 16px 24px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 10px;
+      background: #f8fafc;
+    }
+
+    /* Mobile Bottom Navigation */
+    .bottom-nav {
+      display: none;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100vw;
+      background: #ffffff;
+      border-top: 1px solid var(--border);
+      padding: 8px 12px;
+      z-index: 999;
+      justify-content: space-around;
+      box-shadow: 0 -4px 15px rgba(0,0,0,0.05);
+    }
+
+    .bottom-nav-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      color: #64748b;
+      text-decoration: none;
+      font-size: 0.68rem;
+      font-weight: 600;
+      cursor: pointer;
+      padding: 4px 8px;
+      border-radius: 8px;
+    }
+
+    .bottom-nav-item i {
+      font-size: 1.15rem;
+    }
+
+    .bottom-nav-item.active {
+      color: var(--primary);
+    }
+
+    /* Toast */
+    #toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: #0f172a;
+      color: white;
+      padding: 12px 20px;
+      border-radius: 12px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      display: none;
+      align-items: center;
+      gap: 10px;
+      box-shadow: var(--shadow-lg);
+      z-index: 100000;
+      animation: slideIn 0.3s ease;
+    }
+
+    @keyframes slideIn {
+      from { transform: translateY(30px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    @media (max-width: 992px) {
+      .sidebar {
+        transform: translateX(-100%);
+      }
+      .sidebar.open {
+        transform: translateX(0);
+      }
+      .main-wrapper {
+        margin-left: 0;
+      }
+      .btn-menu-toggle {
+        display: block;
+      }
+      .settings-grid {
+        grid-template-columns: 1fr;
+      }
+      .form-grid-2, .form-grid-3 {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .content-area {
+        padding: 16px;
+        padding-bottom: 80px;
+      }
+      .bottom-nav {
+        display: flex;
+      }
+      .table-container .custom-table {
+        display: none;
+      }
+      .mobile-cards-list {
+        display: flex;
+      }
+      .welcome-banner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+        padding: 20px;
+      }
+      .top-header {
+        padding: 0 16px;
+      }
+      .filter-bar {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .filter-actions {
+        flex-direction: row;
+        width: 100%;
+      }
+      .btn-filter, .btn-print {
+        flex: 1;
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- LOADING OVERLAY -->
+  <div id="loadingOverlay">
+    <div class="loader-spinner"></div>
+    <div class="loader-title" id="loadingTitle">Memproses Data...</div>
+    <div class="loader-desc" id="loadingDesc">Mohon tunggu sebentar, sedang sinkronisasi dengan Google Drive & Spreadsheet.</div>
+  </div>
+
+  <!-- TOAST NOTIFICATION -->
+  <div id="toast">
+    <i class="fa-solid fa-circle-check" style="color: #34d399;"></i>
+    <span id="toastMsg">Berhasil</span>
+  </div>
+
+  <!-- ===================================================
+       1. LOGIN VIEW
+       =================================================== -->
+  <div id="loginView">
+    <div class="login-card">
+      <div class="login-header">
+        <span class="login-badge">
+          <i class="fa-solid fa-school"></i> SDN CIPINANG MELAYU 03 PAGI
+        </span>
+        <div style="display: flex; justify-content: center;">
+          <img id="loginLogoImg" src="https://cdn-icons-png.flaticon.com/512/2991/2991148.png" alt="Logo" class="login-logo" onerror="this.src='https://cdn-icons-png.flaticon.com/512/2991/2991148.png'">
+        </div>
+        <h1 class="login-title">Si Surat</h1>
+        <p class="login-sub">Sistem Informasi & Arsip Digital Surat Resmi Sekolah Terintegrasi Google Drive</p>
+      </div>
+
+      <form id="loginForm" onsubmit="handleLogin(event)">
+        <div class="form-group">
+          <label class="form-label">Username Admin Operator</label>
+          <div class="input-wrapper">
+            <i class="fa-solid fa-user"></i>
+            <input type="text" id="loginUsername" class="input-field" placeholder="Masukkan username" required autocomplete="username" value="admin">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Kata Sandi (Password)</label>
+          <div class="input-wrapper">
+            <i class="fa-solid fa-lock"></i>
+            <input type="password" id="loginPassword" class="input-field" placeholder="Masukkan password" required autocomplete="current-password" value="admin123">
+          </div>
+        </div>
+
+        <button type="submit" class="btn-login" id="btnLoginSubmit">
+          <i class="fa-solid fa-right-to-bracket"></i> Masuk ke Dashboard
+        </button>
+
+        <div class="demo-hint">
+          <i class="fa-solid fa-circle-info"></i> Info Login Bawaan: <strong>admin</strong> / <strong>admin123</strong>
+        </div>
+
+        <div class="vercel-bar">
+          <button type="button" class="btn-api-config" onclick="openApiConfigModal()">
+            <i class="fa-solid fa-plug"></i> <span id="apiStatusBtnText">Hubungkan Google Apps Script (Vercel Mode)</span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ===================================================
+       2. MAIN APP VIEW
+       =================================================== -->
+  <div id="appView">
+    <!-- SIDEBAR NAVIGATION -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-brand">
+        <img id="sideLogoImg" src="https://cdn-icons-png.flaticon.com/512/2991/2991148.png" alt="Logo" class="sidebar-logo">
+        <div class="sidebar-brand-text">
+          <h2>Si Surat</h2>
+          <p id="sideSchoolName">SDN CIPINANG MELAYU 03</p>
+        </div>
+      </div>
+
+      <ul class="sidebar-menu">
+        <li class="menu-header">Menu Utama</li>
+        <li class="menu-item">
+          <a class="menu-link active" onclick="switchTab('dashboard')">
+            <i class="fa-solid fa-chart-pie"></i> Dashboard Utama
+          </a>
+        </li>
+        <li class="menu-item">
+          <a class="menu-link" onclick="switchTab('rekap')">
+            <i class="fa-solid fa-book-bookmark"></i> Rekap & Laporan
+          </a>
+        </li>
+
+        <li class="menu-header">Input Data Surat</li>
+        <li class="menu-item">
+          <a class="menu-link" onclick="openInputForm('SURAT_MASUK')">
+            <i class="fa-solid fa-inbox"></i> Surat Masuk
+          </a>
+        </li>
+        <li class="menu-item">
+          <a class="menu-link" onclick="openInputForm('SURAT_KELUAR')">
+            <i class="fa-solid fa-paper-plane"></i> Surat Keluar
+          </a>
+        </li>
+        <li class="menu-item">
+          <a class="menu-link" onclick="openInputForm('SURAT_KET_KS')">
+            <i class="fa-solid fa-certificate"></i> Surat Keterangan KS
+          </a>
+        </li>
+        <li class="menu-item">
+          <a class="menu-link" onclick="openInputForm('SURAT_TUGAS')">
+            <i class="fa-solid fa-briefcase"></i> Surat Tugas
+          </a>
+        </li>
+
+        <li class="menu-header">Konfigurasi</li>
+        <li class="menu-item">
+          <a class="menu-link" onclick="switchTab('settings')">
+            <i class="fa-solid fa-gear"></i> Pengaturan Aplikasi
+          </a>
+        </li>
+      </ul>
+
+      <div class="sidebar-footer">
+        <div class="user-profile">
+          <div class="user-avatar" id="avatarInitial">A</div>
+          <div class="user-info">
+            <h4 id="userNameDisplay">Admin Operator</h4>
+            <p id="userRoleDisplay">Administrator</p>
+          </div>
+        </div>
+        <button class="btn-logout" onclick="handleLogout()">
+          <i class="fa-solid fa-arrow-right-from-bracket"></i> Keluar (Logout)
+        </button>
+      </div>
+    </aside>
+
+    <!-- MAIN APP CONTENT WRAPPER -->
+    <div class="main-wrapper">
+      <!-- TOP HEADER -->
+      <header class="top-header">
+        <div class="header-left">
+          <button class="btn-menu-toggle" onclick="toggleSidebar()">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+          <div class="page-title" id="pageTitle">Dashboard Arsip Surat</div>
+        </div>
+        <div class="header-right">
+          <span class="badge-live" id="liveBadge">
+            Realtime Terhubung
+          </span>
+          <button class="btn-sync" onclick="syncDataRealtime()" title="Sinkronkan data dengan Spreadsheet & Drive">
+            <i class="fa-solid fa-arrows-rotate" id="syncIcon"></i> Sinkronisasi
+          </button>
+        </div>
+      </header>
+
+      <!-- CONTENT AREA -->
+      <main class="content-area">
+
+        <!-- TAB 1: DASHBOARD UTAMA -->
+        <section id="tab-dashboard" class="tab-content">
+          <!-- WELCOME BANNER -->
+          <div class="welcome-banner">
+            <div class="welcome-text">
+              <h1 id="welcomeGreeting">Selamat Datang, Operator Sekolah!</h1>
+              <p id="welcomeSchoolDesc">Aplikasi Si Surat memudahkan pengelolaan, pencarian, dan pengarsipan surat masuk, surat keluar, surat keterangan kepala sekolah, dan surat tugas SDN Cipinang Melayu 03 Pagi secara otomatis ke Google Spreadsheet & Google Drive.</p>
+            </div>
+          </div>
+
+          <!-- STATS CARDS -->
+          <div class="stats-grid">
+            <div class="stat-card" onclick="filterByCatAndSwitch('SURAT_MASUK')">
+              <div class="stat-icon blue">
+                <i class="fa-solid fa-inbox"></i>
+              </div>
+              <div class="stat-info">
+                <h3 id="countMasuk">0</h3>
+                <p>Surat Masuk</p>
+              </div>
+            </div>
+
+            <div class="stat-card" onclick="filterByCatAndSwitch('SURAT_KELUAR')">
+              <div class="stat-icon green">
+                <i class="fa-solid fa-paper-plane"></i>
+              </div>
+              <div class="stat-info">
+                <h3 id="countKeluar">0</h3>
+                <p>Surat Keluar</p>
+              </div>
+            </div>
+
+            <div class="stat-card" onclick="filterByCatAndSwitch('SURAT_KET_KS')">
+              <div class="stat-icon purple">
+                <i class="fa-solid fa-certificate"></i>
+              </div>
+              <div class="stat-info">
+                <h3 id="countKetKs">0</h3>
+                <p>Surat Keterangan KS</p>
+              </div>
+            </div>
+
+            <div class="stat-card" onclick="filterByCatAndSwitch('SURAT_TUGAS')">
+              <div class="stat-icon orange">
+                <i class="fa-solid fa-briefcase"></i>
+              </div>
+              <div class="stat-info">
+                <h3 id="countTugas">0</h3>
+                <p>Surat Tugas</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- QUICK ACTIONS -->
+          <div class="section-title-wrap">
+            <div class="section-title">
+              <i class="fa-solid fa-bolt text-warning"></i> Input Cepat Surat Baru
+            </div>
+          </div>
+
+          <div class="quick-actions-grid">
+            <div class="quick-card" onclick="openInputForm('SURAT_MASUK')">
+              <div class="quick-icon">
+                <i class="fa-solid fa-inbox"></i>
+              </div>
+              <div class="quick-info">
+                <h4>+ Input Surat Masuk</h4>
+                <p>Catat surat dari dinas atau instansi luar</p>
+              </div>
+            </div>
+
+            <div class="quick-card" onclick="openInputForm('SURAT_KELUAR')">
+              <div class="quick-icon">
+                <i class="fa-solid fa-paper-plane"></i>
+              </div>
+              <div class="quick-info">
+                <h4>+ Input Surat Keluar</h4>
+                <p>Arsipkan surat resmi yang dikeluarkan sekolah</p>
+              </div>
+            </div>
+
+            <div class="quick-card" onclick="openInputForm('SURAT_KET_KS')">
+              <div class="quick-icon">
+                <i class="fa-solid fa-certificate"></i>
+              </div>
+              <div class="quick-info">
+                <h4>+ Surat Keterangan KS</h4>
+                <p>Surat aktif siswa, kelakuan baik, dsb.</p>
+              </div>
+            </div>
+
+            <div class="quick-card" onclick="openInputForm('SURAT_TUGAS')">
+              <div class="quick-icon">
+                <i class="fa-solid fa-briefcase"></i>
+              </div>
+              <div class="quick-info">
+                <h4>+ Input Surat Tugas</h4>
+                <p>Penugasan guru, operator, atau kegiatan sekolah</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- RECENT LETTERS TABLE -->
+          <div class="section-title-wrap">
+            <div class="section-title">
+              <i class="fa-solid fa-clock-rotate-left"></i> Arsip Surat Terbaru
+            </div>
+            <button class="btn-sync" onclick="switchTab('rekap')">
+              Lihat Semua Laporan <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </div>
+
+          <div class="table-container">
+            <table class="custom-table">
+              <thead>
+                <tr>
+                  <th>Kategori</th>
+                  <th>Nomor Surat</th>
+                  <th>Tanggal Surat</th>
+                  <th>Perihal / Keterangan</th>
+                  <th>Berkas Dokumen</th>
+                  <th style="text-align: right;">Aksi</th>
+                </tr>
+              </thead>
+              <tbody id="recentTableBody">
+                <!-- Data populated dynamically -->
+              </tbody>
+            </table>
+            <div class="mobile-cards-list" id="recentMobileList">
+              <!-- Mobile cards populated dynamically -->
+            </div>
+          </div>
+        </section>
+
+        <!-- TAB 2: FORM INPUT DATA SURAT -->
+        <section id="tab-form" class="tab-content" style="display: none;">
+          <div class="form-card">
+            <div class="form-header-bar">
+              <div class="form-header-title">
+                <i class="fa-solid fa-file-circle-plus text-primary"></i>
+                <span id="formTitleText">Input Surat Baru</span>
+              </div>
+              <button class="btn-secondary" onclick="switchTab('dashboard')">
+                <i class="fa-solid fa-xmark"></i> Batal
+              </button>
+            </div>
+
+            <form id="letterForm" onsubmit="handleSaveLetter(event)">
+              <input type="hidden" id="formCategory" value="SURAT_MASUK">
+
+              <div id="dynamicFormFields">
+                <!-- Injected via JS -->
+              </div>
+
+              <!-- FILE UPLOAD DROPZONE -->
+              <div class="form-group" style="margin-top: 18px;">
+                <label class="form-label">Upload Dokumen Surat Fisik / Digital (Word, PDF, JPG, PNG)</label>
+                <div class="file-dropzone" id="dropzoneBox">
+                  <input type="file" id="letterFileInput" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png,.webp" onchange="handleFileSelected(event)">
+                  <div class="dropzone-icon">
+                    <i class="fa-solid fa-cloud-arrow-up"></i>
+                  </div>
+                  <div class="dropzone-text">Pilih atau Drag & Drop Berkas Surat ke Sini</div>
+                  <div class="dropzone-sub">Mendukung format: PDF, Word (.doc/.docx), Gambar (.jpg, .jpeg, .png). Otomatis diarsipkan ke subfolder Google Drive.</div>
+                </div>
+
+                <div class="file-preview-pill" id="filePreviewPill">
+                  <i class="fa-solid fa-file-pdf"></i>
+                  <span id="fileNameLabel">surat_dinas.pdf (1.2 MB)</span>
+                  <button type="button" class="btn-remove-file" onclick="removeSelectedFile()" title="Hapus berkas">
+                    <i class="fa-solid fa-circle-xmark"></i>
+                  </button>
+                </div>
+              </div>
+
+              <div class="form-actions">
+                <button type="button" class="btn-secondary" onclick="switchTab('dashboard')">Batal</button>
+                <button type="submit" class="btn-submit" id="btnSubmitLetter">
+                  <i class="fa-solid fa-floppy-disk"></i> Simpan Data Surat
+                </button>
+              </div>
+            </form>
+          </div>
+        </section>
+
+        <!-- TAB 3: REKAPITULASI & LAPORAN BULANAN -->
+        <section id="tab-rekap" class="tab-content" style="display: none;">
+          <!-- FILTER BAR -->
+          <div class="filter-bar">
+            <div class="filter-item">
+              <label>Kategori Surat</label>
+              <select id="filterCategory" class="select-field" onchange="applyRekapFilter()">
+                <option value="ALL">Semua Kategori Surat</option>
+                <option value="SURAT_MASUK">Surat Masuk</option>
+                <option value="SURAT_KELUAR">Surat Keluar</option>
+                <option value="SURAT_KET_KS">Surat Keterangan KS</option>
+                <option value="SURAT_TUGAS">Surat Tugas</option>
+              </select>
+            </div>
+
+            <div class="filter-item">
+              <label>Bulan Surat</label>
+              <select id="filterMonth" class="select-field" onchange="applyRekapFilter()">
+                <option value="">Semua Bulan</option>
+                <option value="1">Januari</option>
+                <option value="2">Februari</option>
+                <option value="3">Maret</option>
+                <option value="4">April</option>
+                <option value="5">Mei</option>
+                <option value="6">Juni</option>
+                <option value="7">Juli</option>
+                <option value="8">Agustus</option>
+                <option value="9">September</option>
+                <option value="10">Oktober</option>
+                <option value="11">November</option>
+                <option value="12">Desember</option>
+              </select>
+            </div>
+
+            <!-- Filter Tahun: Kosongkan secara default, diisi dinamis sesuai data arsip surat berjalan -->
+            <div class="filter-item">
+              <label>Tahun Surat</label>
+              <select id="filterYear" class="select-field" onchange="applyRekapFilter()">
+                <option value="">Semua Tahun (Sesuai Arsip)</option>
+              </select>
+            </div>
+
+            <div class="filter-item" style="flex: 1.5;">
+              <label>Pencarian Kata Kunci</label>
+              <div class="input-wrapper">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" id="filterKeyword" class="input-field" placeholder="Cari nomor, perihal, nama..." onkeyup="applyRekapFilter()">
+              </div>
+            </div>
+
+            <div class="filter-actions">
+              <button class="btn-print" onclick="printRekapLaporan()">
+                <i class="fa-solid fa-print"></i> Cetak Rekap
+              </button>
+            </div>
+          </div>
+
+          <!-- SUMMARY COUNTER STRIP -->
+          <div class="stats-grid" style="grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); margin-bottom: 20px;">
+            <div class="stat-card" style="padding: 14px;">
+              <div class="stat-info">
+                <h3 id="rekapCountTotal" style="font-size: 1.35rem;">0</h3>
+                <p>Total Surat Terfilter</p>
+              </div>
+            </div>
+            <div class="stat-card" style="padding: 14px;">
+              <div class="stat-info">
+                <h3 id="rekapCountMasuk" style="font-size: 1.35rem;">0</h3>
+                <p>Surat Masuk</p>
+              </div>
+            </div>
+            <div class="stat-card" style="padding: 14px;">
+              <div class="stat-info">
+                <h3 id="rekapCountKeluar" style="font-size: 1.35rem;">0</h3>
+                <p>Surat Keluar</p>
+              </div>
+            </div>
+            <div class="stat-card" style="padding: 14px;">
+              <div class="stat-info">
+                <h3 id="rekapCountKet" style="font-size: 1.35rem;">0</h3>
+                <p>Ket. Kepala Sekolah</p>
+              </div>
+            </div>
+            <div class="stat-card" style="padding: 14px;">
+              <div class="stat-info">
+                <h3 id="rekapCountTugas" style="font-size: 1.35rem;">0</h3>
+                <p>Surat Tugas</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- REKAP TABLE -->
+          <div class="table-container">
+            <table class="custom-table">
+              <thead>
+                <tr>
+                  <th style="width: 50px;">No</th>
+                  <th>Kategori</th>
+                  <th>Nomor Surat</th>
+                  <th>Tanggal</th>
+                  <th>Pihak Terkait / Pengirim / Penerima</th>
+                  <th>Perihal & Keterangan</th>
+                  <th>Dokumen</th>
+                  <th style="text-align: right; width: 120px;">Aksi</th>
+                </tr>
+              </thead>
+              <tbody id="rekapTableBody">
+                <!-- Populated dynamically -->
+              </tbody>
+            </table>
+            <div class="mobile-cards-list" id="rekapMobileList">
+              <!-- Mobile view list -->
+            </div>
+          </div>
+        </section>
+
+        <!-- TAB 4: PENGATURAN (SETTINGS) -->
+        <section id="tab-settings" class="tab-content" style="display: none;">
+          <div class="form-card">
+            <div class="form-header-bar">
+              <div class="form-header-title">
+                <i class="fa-solid fa-sliders text-primary"></i> Pengaturan Aplikasi & Kop Surat
+              </div>
+            </div>
+
+            <form id="settingsForm" onsubmit="handleSaveSettings(event)">
+              <div class="settings-grid">
+                <!-- KOLOM 1: IDENTITAS SEKOLAH & LOGO -->
+                <div>
+                  <h4 style="font-size: 0.95rem; font-weight: 800; color: #0f172a; margin-bottom: 14px;">
+                    <i class="fa-solid fa-school text-primary"></i> Identitas & Logo
+                  </h4>
+
+                  <div class="form-group">
+                    <label class="form-label">Nama Resmi Sekolah</label>
+                    <input type="text" id="cfgSchoolName" class="input-field" value="SDN CIPINANG MELAYU 03 PAGI" required>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="form-label">Alamat Sekolah</label>
+                    <textarea id="cfgSchoolAddress" class="textarea-field" rows="2">Jl. Cipinang Melayu, Makasar, Jakarta Timur</textarea>
+                  </div>
+
+                  <div class="form-grid-2">
+                    <div class="form-group">
+                      <label class="form-label">NPSN</label>
+                      <input type="text" id="cfgNpsn" class="input-field" value="20108861">
+                    </div>
+                    <div class="form-group">
+                      <label class="form-label">Email Sekolah</label>
+                      <input type="email" id="cfgEmail" class="input-field" value="sdncipinangmelayu03@gmail.com">
+                    </div>
+                  </div>
+
+                  <!-- LOGO DASHBOARD -->
+                  <div class="form-group" style="margin-top: 10px;">
+                    <label class="form-label">Logo Dashboard Aplikasi</label>
+                    <div style="display: flex; gap: 14px; align-items: center;">
+                      <div class="logo-preview-box">
+                        <img id="prevLogoDash" src="https://cdn-icons-png.flaticon.com/512/2991/2991148.png" alt="Logo Dash">
+                      </div>
+                      <div style="flex: 1;">
+                        <input type="file" id="logoDashFile" accept="image/*" class="select-field" onchange="previewImageFile(event, 'prevLogoDash')">
+                        <small style="color: #64748b; font-size: 0.72rem;">Format: PNG atau JPG transparan (disarankan 512x512)</small>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- LOGO KOP SURAT -->
+                  <div class="form-group">
+                    <label class="form-label">Logo Kop Surat Laporan (Logo Pemprov/Sekolah)</label>
+                    <div style="display: flex; gap: 14px; align-items: center;">
+                      <div class="logo-preview-box">
+                        <img id="prevLogoKop" src="https://cdn-icons-png.flaticon.com/512/2991/2991148.png" alt="Logo Kop">
+                      </div>
+                      <div style="flex: 1;">
+                        <input type="file" id="logoKopFile" accept="image/*" class="select-field" onchange="previewImageFile(event, 'prevLogoKop')">
+                        <small style="color: #64748b; font-size: 0.72rem;">Logo yang tercetak pada Kop Laporan Rekapitulasi</small>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- KOLOM 2: PEJABAT SEKOLAH & AKUN ADMIN -->
+                <div>
+                  <h4 style="font-size: 0.95rem; font-weight: 800; color: #0f172a; margin-bottom: 14px;">
+                    <i class="fa-solid fa-user-tie text-accent"></i> Pejabat & Operator Sekolah
+                  </h4>
+
+                  <div class="form-group">
+                    <label class="form-label">Nama Kepala Sekolah</label>
+                    <input type="text" id="cfgKsName" class="input-field" value="H. Ahmad Supriyadi, S.Pd., M.M." required>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="form-label">NIP Kepala Sekolah</label>
+                    <input type="text" id="cfgKsNip" class="input-field" value="19700512 199403 1 004" required>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="form-label">Nama Operator / Admin Surat</label>
+                    <input type="text" id="cfgAdminName" class="input-field" value="Operator Sekolah" required>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="form-label">NIP / NUPTK Operator</label>
+                    <input type="text" id="cfgAdminNip" class="input-field" value="19880915 201502 1 002">
+                  </div>
+
+                  <h4 style="font-size: 0.95rem; font-weight: 800; color: #0f172a; margin-top: 24px; margin-bottom: 14px;">
+                    <i class="fa-solid fa-key text-warning"></i> Keamanan Akun Admin
+                  </h4>
+
+                  <div class="form-group">
+                    <label class="form-label">Ganti Password Admin (Opsional)</label>
+                    <input type="password" id="cfgNewPassword" class="input-field" placeholder="Kosongkan jika tidak ingin mengubah password">
+                  </div>
+
+                  <h4 style="font-size: 0.95rem; font-weight: 800; color: #0f172a; margin-top: 24px; margin-bottom: 14px;">
+                    <i class="fa-solid fa-cloud text-primary"></i> Backend Apps Script (Mode Vercel)
+                  </h4>
+
+                  <div class="form-group">
+                    <label class="form-label">URL Web App Google Apps Script</label>
+                    <input type="url" id="cfgGasUrl" class="input-field" placeholder="https://script.google.com/macros/s/AKfycb.../exec">
+                    <small style="color: #64748b; font-size: 0.72rem;">Diperlukan jika website diakses via Vercel / domain eksternal.</small>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-actions">
+                <button type="submit" class="btn-submit" id="btnSaveConfig">
+                  <i class="fa-solid fa-floppy-disk"></i> Simpan Semua Pengaturan
+                </button>
+              </div>
+            </form>
+          </div>
+        </section>
+
+      </main>
+    </div>
+  </div>
+
+  <!-- MOBILE BOTTOM NAVIGATION -->
+  <nav class="bottom-nav">
+    <div class="bottom-nav-item active" onclick="switchTab('dashboard')">
+      <i class="fa-solid fa-chart-pie"></i>
+      <span>Beranda</span>
+    </div>
+    <div class="bottom-nav-item" onclick="openInputForm('SURAT_MASUK')">
+      <i class="fa-solid fa-inbox"></i>
+      <span>Masuk</span>
+    </div>
+    <div class="bottom-nav-item" onclick="openInputForm('SURAT_KELUAR')">
+      <i class="fa-solid fa-paper-plane"></i>
+      <span>Keluar</span>
+    </div>
+    <div class="bottom-nav-item" onclick="switchTab('rekap')">
+      <i class="fa-solid fa-book-bookmark"></i>
+      <span>Rekap</span>
+    </div>
+    <div class="bottom-nav-item" onclick="switchTab('settings')">
+      <i class="fa-solid fa-gear"></i>
+      <span>Seting</span>
+    </div>
+  </nav>
+
+  <!-- MODAL DETAIL SURAT -->
+  <div class="modal-overlay" id="detailModal">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 id="modalDetailTitle">Detail Data Surat</h3>
+        <button class="btn-close-modal" onclick="closeDetailModal()">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <div class="modal-body" id="modalDetailContent">
+        <!-- Injected dynamically -->
+      </div>
+      <div class="modal-footer">
+        <a id="btnModalOpenFile" href="#" target="_blank" class="btn-submit" style="display: none; text-decoration: none;">
+          <i class="fa-solid fa-file-arrow-down"></i> Buka / Unduh Berkas
+        </a>
+        <button class="btn-secondary" onclick="closeDetailModal()">Tutup</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL KONFIGURASI URL API (UNTUK DEPLOY VERCEL) -->
+  <div class="modal-overlay" id="apiConfigModal">
+    <div class="modal-card" style="max-width: 520px;">
+      <div class="modal-header">
+        <h3><i class="fa-solid fa-plug text-primary"></i> Pengaturan Backend Vercel</h3>
+        <button class="btn-close-modal" onclick="closeApiConfigModal()"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="modal-body">
+        <p style="font-size: 0.85rem; color: #475569; margin-bottom: 14px; line-height: 1.5;">
+          Saat website di-deploy di <strong>Vercel</strong>, masukkan tautan <strong>Web App URL Google Apps Script</strong> Anda di bawah ini agar data otomatis tersambung ke Google Spreadsheet & Google Drive.
+        </p>
+        <div class="form-group">
+          <label class="form-label">Google Apps Script Web App URL</label>
+          <input type="url" id="inpGasApiUrl" class="input-field" placeholder="https://script.google.com/macros/s/AKfycb.../exec">
+          <small style="font-size: 0.72rem; color: #64748b; margin-top: 4px; display: block;">
+            Didapat dari: Editor Apps Script &gt; Deploy &gt; Manage deployments &gt; Salin Web app URL.
+          </small>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn-secondary" onclick="testGasApiConnection()"><i class="fa-solid fa-satellite-dish"></i> Tes Koneksi</button>
+        <button type="button" class="btn-submit" onclick="saveGasApiUrl()"><i class="fa-solid fa-check"></i> Simpan URL</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRINT KOP SURAT LAPORAN -->
+  <div id="printArea">
+    <div class="kop-wrapper">
+      <img id="printKopLogo" src="https://cdn-icons-png.flaticon.com/512/2991/2991148.png" alt="Logo" class="kop-logo">
+      <div class="kop-text">
+        <h2>PEMERINTAH PROVINSI DAERAH KHUSUS IBUKOTA JAKARTA</h2>
+        <h2>DINAS PENDIDIKAN</h2>
+        <h1 id="printKopSchoolName">SEKOLAH DASAR NEGERI CIPINANG MELAYU 03 PAGI</h1>
+        <p id="printKopAddress">Jl. Cipinang Melayu, Makasar, Jakarta Timur</p>
+        <p id="printKopContact">NPSN: 20108861 | Email: sdncipinangmelayu03@gmail.com</p>
+      </div>
+    </div>
+
+    <div class="print-title">LAPORAN REKAPITULASI ARSIP SURAT</div>
+    <div class="print-sub" id="printSubPeriod">Periode: Semua Surat Terdaftar</div>
+
+    <table class="print-table">
+      <thead>
+        <tr>
+          <th style="width: 35px;">No</th>
+          <th>Kategori</th>
+          <th>Nomor Surat</th>
+          <th>Tanggal</th>
+          <th>Pihak Terkait</th>
+          <th>Perihal / Keterangan</th>
+          <th>Status Dokumen</th>
+        </tr>
+      </thead>
+      <tbody id="printTableBody">
+        <!-- Populated on print -->
+      </tbody>
+    </table>
+
+    <div class="ttd-container">
+      <div class="ttd-box">
+        <p>Mengetahui,</p>
+        <p>Kepala SDN Cipinang Melayu 03 Pagi</p>
+        <div class="ttd-space"></div>
+        <p><strong id="printKsName">H. Ahmad Supriyadi, S.Pd., M.M.</strong></p>
+        <p id="printKsNip">NIP. 19700512 199403 1 004</p>
+      </div>
+
+      <div class="ttd-box">
+        <p id="printDateNow">Jakarta, 16 Oktober 2026</p>
+        <p>Admin / Operator Surat</p>
+        <div class="ttd-space"></div>
+        <p><strong id="printAdminName">Operator Sekolah</strong></p>
+        <p id="printAdminNip">NIP. 19880915 201502 1 002</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- JAVASCRIPT APPLICATION LOGIC -->
+  <script>
+    // State Aplikasi Global
+    const APP_STATE = {
+      currentUser: null,
+      settings: {
+        NAMA_SEKOLAH: 'SDN CIPINANG MELAYU 03 PAGI',
+        ALAMAT_SEKOLAH: 'Jl. Cipinang Melayu, Makasar, Jakarta Timur',
+        NPSN: '20108861',
+        EMAIL_SEKOLAH: 'sdncipinangmelayu03@gmail.com',
+        NAMA_KS: 'H. Ahmad Supriyadi, S.Pd., M.M.',
+        NIP_KS: '19700512 199403 1 004',
+        NAMA_ADMIN: 'Operator Sekolah',
+        NIP_ADMIN: '19880915 201502 1 002',
+        LOGO_DASHBOARD_URL: '',
+        LOGO_KOP_URL: ''
+      },
+      stats: { masuk: 0, keluar: 0, ketKs: 0, tugas: 0 },
+      years: [],
+      recentLetters: [],
+      allRekapRecords: [],
+      selectedFileBase64: null,
+      selectedFileName: '',
+      selectedFileType: '',
+      logoDashBase64: null,
+      logoKopBase64: null
+    };
+
+    // Deteksi apakah sedang berjalan di lingkungan internal Google Apps Script
+    const isGAS = typeof google !== 'undefined' && google.script && google.script.run;
+    let gasApiUrl = localStorage.getItem('si_surat_api_url') || '';
+
+    // Inisialisasi saat Halaman Dimuat
+    document.addEventListener('DOMContentLoaded', () => {
+      initApiConnectionState();
+      checkSavedSession();
+    });
+
+    function initApiConnectionState() {
+      const btnText = document.getElementById('apiStatusBtnText');
+      const liveBadge = document.getElementById('liveBadge');
+
+      if (isGAS) {
+        if (btnText) btnText.innerText = 'Lingkungan Google Apps Script Aktif';
+        if (liveBadge) liveBadge.innerText = 'Realtime (Apps Script)';
+      } else if (gasApiUrl) {
+        if (btnText) btnText.innerText = 'Tersambung ke Google Apps Script';
+        if (liveBadge) liveBadge.innerText = 'Realtime (Vercel API)';
+      } else {
+        if (btnText) btnText.innerText = 'Hubungkan Google Apps Script (Vercel Mode)';
+        if (liveBadge) liveBadge.innerText = 'Mode Pratinjau Lokal';
+      }
+
+      const cfgInput = document.getElementById('cfgGasUrl');
+      if (cfgInput) cfgInput.value = gasApiUrl;
+      const modalInput = document.getElementById('inpGasApiUrl');
+      if (modalInput) modalInput.value = gasApiUrl;
+    }
+
+    /**
+     * UNIFIED API CALLER (Mendukung google.script.run & fetch ke Vercel)
+     */
+    function callBackendApi(action, data = {}) {
+      return new Promise((resolve, reject) => {
+        if (isGAS) {
+          const runner = google.script.run
+            .withSuccessHandler(res => resolve(res))
+            .withFailureHandler(err => reject(err));
+          
+          switch (action) {
+            case 'login': runner.loginAdmin(data.username, data.password); break;
+            case 'getInitialData': runner.getDashboardInitialData(); break;
+            case 'saveSurat': runner.saveSuratData(data.category, data.formData, data.fileObj); break;
+            case 'getRekap': runner.getMonthlyRekap(data.filterObj || {}); break;
+            case 'getLetters': runner.getLettersList(data.category, data.filterObj || {}); break;
+            case 'deleteLetter': runner.deleteLetter(data.category, data.id); break;
+            case 'saveSettings': runner.saveSettings(data.configData, data.logoDashFile, data.logoKopFile); break;
+            case 'changePassword': runner.changePassword(data.username, data.oldPassword, data.newPassword); break;
+            default: reject(new Error('Aksi tidak dikenal: ' + action));
+          }
+        } else if (gasApiUrl) {
+          // Panggilan fetch POST ke endpoint Google Apps Script Web App
+          fetch(gasApiUrl, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'text/plain;charset=utf-8'
+            },
+            body: JSON.stringify({ action, ...data })
+          })
+          .then(res => {
+            if (!res.ok) throw new Error('HTTP Status: ' + res.status);
+            return res.json();
+          })
+          .then(json => resolve(json))
+          .catch(err => reject(err));
+        } else {
+          // Fallback offline mock generator
+          handleOfflineMock(action, data, resolve, reject);
+        }
+      });
+    }
+
+    /**
+     * Modal Konfigurasi Vercel API
+     */
+    function openApiConfigModal() {
+      document.getElementById('inpGasApiUrl').value = gasApiUrl;
+      document.getElementById('apiConfigModal').style.display = 'flex';
+    }
+
+    function closeApiConfigModal() {
+      document.getElementById('apiConfigModal').style.display = 'none';
+    }
+
+    function saveGasApiUrl() {
+      const url = document.getElementById('inpGasApiUrl').value.trim();
+      gasApiUrl = url;
+      localStorage.setItem('si_surat_api_url', url);
+      initApiConnectionState();
+      closeApiConfigModal();
+      showToast('URL Google Apps Script berhasil disimpan!');
+      if (APP_STATE.currentUser) {
+        fetchDashboardData();
+      }
+    }
+
+    function testGasApiConnection() {
+      const testUrl = document.getElementById('inpGasApiUrl').value.trim();
+      if (!testUrl) {
+        showToast('Masukkan URL Web App terlebih dahulu!', false);
+        return;
+      }
+
+      showLoading('Menguji Koneksi...', 'Menghubungkan ke Web App Google Apps Script');
+      fetch(testUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: JSON.stringify({ action: 'ping' })
+      })
+      .then(res => res.json())
+      .then(res => {
+        hideLoading();
+        if (res && res.success) {
+          showToast('Koneksi Berhasil! API aktif & siap digunakan.');
+        } else {
+          showToast(res.message || 'Koneksi ditolak oleh endpoint.', false);
+        }
+      })
+      .catch(err => {
+        hideLoading();
+        showToast('Gagal terhubung: ' + err.message, false);
+      });
+    }
+
+    /**
+     * Tampilkan Toast
+     */
+    function showToast(msg, isSuccess = true) {
+      const toast = document.getElementById('toast');
+      const toastMsg = document.getElementById('toastMsg');
+      toast.style.display = 'flex';
+      toast.querySelector('i').className = isSuccess ? 'fa-solid fa-circle-check' : 'fa-solid fa-circle-exclamation';
+      toast.querySelector('i').style.color = isSuccess ? '#34d399' : '#f87171';
+      toastMsg.innerText = msg;
+      setTimeout(() => {
+        toast.style.display = 'none';
+      }, 3500);
+    }
+
+    function showLoading(title = 'Memproses...', desc = 'Mohon tunggu sebentar...') {
+      document.getElementById('loadingTitle').innerText = title;
+      document.getElementById('loadingDesc').innerText = desc;
+      document.getElementById('loadingOverlay').style.display = 'flex';
+    }
+
+    function hideLoading() {
+      document.getElementById('loadingOverlay').style.display = 'none';
+    }
+
+    /**
+     * Autentikasi & Sesi
+     */
+    function checkSavedSession() {
+      const savedUser = localStorage.getItem('si_surat_user');
+      if (savedUser) {
+        try {
+          APP_STATE.currentUser = JSON.parse(savedUser);
+          renderAppView();
+          fetchDashboardData();
+        } catch (e) {
+          localStorage.removeItem('si_surat_user');
+        }
+      }
+    }
+
+    function handleLogin(e) {
+      e.preventDefault();
+      const user = document.getElementById('loginUsername').value.trim();
+      const pass = document.getElementById('loginPassword').value.trim();
+
+      if (!user || !pass) {
+        showToast('Username dan password harus diisi!', false);
+        return;
+      }
+
+      showLoading('Memverifikasi Login...', 'Menghubungkan ke sistem autentikasi SDN Cipinang Melayu 03 Pagi');
+
+      callBackendApi('login', { username: user, password: pass })
+        .then(response => {
+          hideLoading();
+          if (response && response.success) {
+            APP_STATE.currentUser = response.user;
+            localStorage.setItem('si_surat_user', JSON.stringify(response.user));
+            showToast('Login berhasil! Selamat datang ' + response.user.fullName);
+            renderAppView();
+            fetchDashboardData();
+          } else {
+            showToast(response.message || 'Username atau password salah!', false);
+          }
+        })
+        .catch(err => {
+          hideLoading();
+          showToast('Gagal terhubung: ' + err.message, false);
+        });
+    }
+
+    function handleLogout() {
+      showLoading('Mengakhiri Sesi...', 'Menghapus sesi login admin');
+      setTimeout(() => {
+        localStorage.removeItem('si_surat_user');
+        APP_STATE.currentUser = null;
+        document.getElementById('appView').style.display = 'none';
+        document.getElementById('loginView').style.display = 'flex';
+        hideLoading();
+        showToast('Anda telah berhasil keluar.');
+      }, 400);
+    }
+
+    function renderAppView() {
+      document.getElementById('loginView').style.display = 'none';
+      document.getElementById('appView').style.display = 'block';
+
+      if (APP_STATE.currentUser) {
+        document.getElementById('userNameDisplay').innerText = APP_STATE.currentUser.fullName || APP_STATE.currentUser.username;
+        document.getElementById('avatarInitial').innerText = (APP_STATE.currentUser.fullName || APP_STATE.currentUser.username).charAt(0).toUpperCase();
+        document.getElementById('welcomeGreeting').innerText = 'Selamat Datang, ' + (APP_STATE.currentUser.fullName || 'Operator');
+      }
+    }
+
+    function fetchDashboardData() {
+      const syncIcon = document.getElementById('syncIcon');
+      if (syncIcon) syncIcon.classList.add('rotating');
+
+      callBackendApi('getInitialData')
+        .then(res => {
+          if (syncIcon) syncIcon.classList.remove('rotating');
+          if (res && res.success) {
+            if (res.stats) APP_STATE.stats = res.stats;
+            if (res.settings) APP_STATE.settings = res.settings;
+            if (res.years) APP_STATE.years = res.years;
+            if (res.recent) APP_STATE.recentLetters = res.recent;
+
+            updateUIComponents();
+          }
+        })
+        .catch(err => {
+          if (syncIcon) syncIcon.classList.remove('rotating');
+          showToast('Gagal memuat data: ' + err.message, false);
+        });
+    }
+
+    function syncDataRealtime() {
+      showToast('Menyinkronkan data terbaru...');
+      fetchDashboardData();
+      if (document.getElementById('tab-rekap').style.display !== 'none') {
+        applyRekapFilter();
+      }
+    }
+
+    function updateUIComponents() {
+      // 1. Stats Counter
+      document.getElementById('countMasuk').innerText = APP_STATE.stats.masuk || 0;
+      document.getElementById('countKeluar').innerText = APP_STATE.stats.keluar || 0;
+      document.getElementById('countKetKs').innerText = APP_STATE.stats.ketKs || 0;
+      document.getElementById('countTugas').innerText = APP_STATE.stats.tugas || 0;
+
+      // 2. Settings Identitas Sekolah
+      const s = APP_STATE.settings;
+      if (s.NAMA_SEKOLAH) {
+        document.getElementById('sideSchoolName').innerText = s.NAMA_SEKOLAH;
+        document.getElementById('printKopSchoolName').innerText = s.NAMA_SEKOLAH;
+        document.getElementById('cfgSchoolName').value = s.NAMA_SEKOLAH;
+      }
+      if (s.ALAMAT_SEKOLAH) {
+        document.getElementById('cfgSchoolAddress').value = s.ALAMAT_SEKOLAH;
+        document.getElementById('printKopAddress').innerText = s.ALAMAT_SEKOLAH;
+      }
+      if (s.NPSN) document.getElementById('cfgNpsn').value = s.NPSN;
+      if (s.EMAIL_SEKOLAH) document.getElementById('cfgEmail').value = s.EMAIL_SEKOLAH;
+      if (s.NAMA_KS) {
+        document.getElementById('cfgKsName').value = s.NAMA_KS;
+        document.getElementById('printKsName').innerText = s.NAMA_KS;
+      }
+      if (s.NIP_KS) {
+        document.getElementById('cfgKsNip').value = s.NIP_KS;
+        document.getElementById('printKsNip').innerText = 'NIP. ' + s.NIP_KS;
+      }
+      if (s.NAMA_ADMIN) {
+        document.getElementById('cfgAdminName').value = s.NAMA_ADMIN;
+        document.getElementById('printAdminName').innerText = s.NAMA_ADMIN;
+      }
+      if (s.NIP_ADMIN) {
+        document.getElementById('cfgAdminNip').value = s.NIP_ADMIN;
+        document.getElementById('printAdminNip').innerText = 'NIP. ' + s.NIP_ADMIN;
+      }
+
+      // Logo
+      if (s.LOGO_DASHBOARD_URL) {
+        document.getElementById('sideLogoImg').src = s.LOGO_DASHBOARD_URL;
+        document.getElementById('loginLogoImg').src = s.LOGO_DASHBOARD_URL;
+        document.getElementById('prevLogoDash').src = s.LOGO_DASHBOARD_URL;
+      }
+      if (s.LOGO_KOP_URL) {
+        document.getElementById('prevLogoKop').src = s.LOGO_KOP_URL;
+        document.getElementById('printKopLogo').src = s.LOGO_KOP_URL;
+      }
+
+      // 3. Populate Year Filter
+      populateYearFilter(APP_STATE.years);
+
+      // 4. Render Recent Letters Table
+      renderRecentTable(APP_STATE.recentLetters);
+    }
+
+    function populateYearFilter(years) {
+      const yearSelect = document.getElementById('filterYear');
+      const currentSelected = yearSelect.value;
+      
+      yearSelect.innerHTML = '<option value="">Semua Tahun (Sesuai Arsip)</option>';
+      
+      if (years && years.length > 0) {
+        years.forEach(yr => {
+          const opt = document.createElement('option');
+          opt.value = yr;
+          opt.innerText = 'Tahun ' + yr;
+          yearSelect.appendChild(opt);
+        });
+      }
+
+      if (currentSelected) {
+        yearSelect.value = currentSelected;
+      }
+    }
+
+    function renderRecentTable(letters) {
+      const tbody = document.getElementById('recentTableBody');
+      const mobileList = document.getElementById('recentMobileList');
+      tbody.innerHTML = '';
+      mobileList.innerHTML = '';
+
+      if (!letters || letters.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="6" class="empty-state"><i class="fa-solid fa-folder-open"></i><h4>Belum ada arsip surat</h4><p>Klik tombol + Input Cepat untuk menambahkan surat baru.</p></td></tr>';
+        mobileList.innerHTML = '<div class="empty-state"><i class="fa-solid fa-folder-open"></i><h4>Belum ada surat</h4></div>';
+        return;
+      }
+
+      letters.forEach(item => {
+        const badgeClass = getBadgeClass(item.category);
+        const fileIcon = getFileBadgeIcon(item.fileName, item.fileUrl);
+
+        // Desktop Row
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td><span class="badge-cat ${badgeClass}">${item.categoryName || item.category}</span></td>
+          <td><strong>${escapeHtml(item.nomorSurat)}</strong></td>
+          <td>${item.tanggalSurat}</td>
+          <td>${escapeHtml(item.perihal)}</td>
+          <td>${fileIcon}</td>
+          <td style="text-align: right;">
+            <div class="action-btns" style="justify-content: flex-end;">
+              <button class="btn-action view" onclick="viewLetterDetail('${item.category}', '${item.id}')" title="Lihat Rincian">
+                <i class="fa-solid fa-eye"></i>
+              </button>
+            </div>
+          </td>
+        `;
+        tbody.appendChild(tr);
+
+        // Mobile Card
+        const mcard = document.createElement('div');
+        mcard.className = 'm-letter-card';
+        mcard.innerHTML = `
+          <div class="m-card-header">
+            <span class="badge-cat ${badgeClass}">${item.categoryName || item.category}</span>
+            <small style="color: #64748b;">${item.tanggalSurat}</small>
+          </div>
+          <div class="m-card-title">${escapeHtml(item.nomorSurat)}</div>
+          <div class="m-card-sub">${escapeHtml(item.perihal)}</div>
+          <div class="m-card-footer">
+            <div>${fileIcon}</div>
+            <div class="action-btns">
+              <button class="btn-action view" onclick="viewLetterDetail('${item.category}', '${item.id}')">
+                <i class="fa-solid fa-eye"></i>
+              </button>
+            </div>
+          </div>
+        `;
+        mobileList.appendChild(mcard);
+      });
+    }
+
+    function getBadgeClass(cat) {
+      if (cat === 'SURAT_MASUK') return 'masuk';
+      if (cat === 'SURAT_KELUAR') return 'keluar';
+      if (cat === 'SURAT_KET_KS') return 'ket-ks';
+      return 'tugas';
+    }
+
+    function getFileBadgeIcon(fileName, fileUrl) {
+      if (!fileUrl) {
+        return '<span style="color: #94a3b8; font-size: 0.78rem;"><i class="fa-solid fa-circle-xmark"></i> Tidak Ada File</span>';
+      }
+      return `<a href="${fileUrl}" target="_blank" style="color: #0284c7; font-size: 0.82rem; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 5px;">
+        <i class="fa-solid fa-file-arrow-down"></i> ${fileName ? escapeHtml(truncateString(fileName, 22)) : 'Buka Berkas'}
+      </a>`;
+    }
+
+    function truncateString(str, num) {
+      if (!str) return '';
+      return str.length > num ? str.slice(0, num) + '...' : str;
+    }
+
+    function switchTab(tabId) {
+      document.querySelectorAll('.tab-content').forEach(el => el.style.display = 'none');
+      document.querySelectorAll('.menu-link').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.bottom-nav-item').forEach(el => el.classList.remove('active'));
+
+      const targetSection = document.getElementById('tab-' + tabId);
+      if (targetSection) targetSection.style.display = 'block';
+
+      const sideLinks = document.querySelectorAll('.menu-link');
+      sideLinks.forEach(link => {
+        if (link.getAttribute('onclick') && link.getAttribute('onclick').includes(tabId)) {
+          link.classList.add('active');
+        }
+      });
+
+      const btmItems = document.querySelectorAll('.bottom-nav-item');
+      btmItems.forEach(item => {
+        if (item.getAttribute('onclick') && item.getAttribute('onclick').includes(tabId)) {
+          item.classList.add('active');
+        }
+      });
+
+      const pageTitle = document.getElementById('pageTitle');
+      if (tabId === 'dashboard') pageTitle.innerText = 'Dashboard Utama';
+      else if (tabId === 'rekap') {
+        pageTitle.innerText = 'Rekapitulasi & Laporan Surat';
+        applyRekapFilter();
+      } else if (tabId === 'settings') pageTitle.innerText = 'Pengaturan Aplikasi & Kop Surat';
+      else if (tabId === 'form') pageTitle.innerText = 'Form Input Surat';
+
+      document.getElementById('sidebar').classList.remove('open');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function toggleSidebar() {
+      document.getElementById('sidebar').classList.toggle('open');
+    }
+
+    function openInputForm(category) {
+      switchTab('form');
+      document.getElementById('formCategory').value = category;
+      resetFilePill();
+
+      const dynamicContainer = document.getElementById('dynamicFormFields');
+      const formTitle = document.getElementById('formTitleText');
+      const todayStr = new Date().toISOString().split('T')[0];
+
+      if (category === 'SURAT_MASUK') {
+        formTitle.innerText = 'Input Surat Masuk';
+        dynamicContainer.innerHTML = `
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label class="form-label">Nomor Agenda Surat</label>
+              <input type="text" id="inpNoAgenda" class="input-field" placeholder="Contoh: 001/SM/2026">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Nomor Surat Masuk *</label>
+              <input type="text" id="inpNoSurat" class="input-field" placeholder="Contoh: 421.2/120/DISDIK/2026" required>
+            </div>
+          </div>
+
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label class="form-label">Tanggal Surat *</label>
+              <input type="date" id="inpTglSurat" class="input-field" value="${todayStr}" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Tanggal Diterima *</label>
+              <input type="date" id="inpTglDiterima" class="input-field" value="${todayStr}" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Asal Pengirim Surat *</label>
+            <input type="text" id="inpPengirim" class="input-field" placeholder="Contoh: Dinas Pendidikan DKI Jakarta / Sudin Wilayah 1" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Perihal Surat *</label>
+            <input type="text" id="inpPerihal" class="input-field" placeholder="Contoh: Undangan Sosialisasi Kurikulum Nasional" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Disposisi / Catatan Keterangan</label>
+            <textarea id="inpKeterangan" class="textarea-field" placeholder="Instruksi kepala sekolah atau catatan penting..."></textarea>
+          </div>
+        `;
+      } else if (category === 'SURAT_KELUAR') {
+        formTitle.innerText = 'Input Surat Keluar';
+        dynamicContainer.innerHTML = `
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label class="form-label">Nomor Agenda</label>
+              <input type="text" id="inpNoAgenda" class="input-field" placeholder="Contoh: 001/SK/2026">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Nomor Surat Keluar *</label>
+              <input type="text" id="inpNoSurat" class="input-field" placeholder="Contoh: 421.2/045/SDN03/2026" required>
+            </div>
+          </div>
+
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label class="form-label">Tanggal Surat *</label>
+              <input type="date" id="inpTglSurat" class="input-field" value="${todayStr}" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Tujuan / Penerima Surat *</label>
+              <input type="text" id="inpTujuan" class="input-field" placeholder="Contoh: Orang Tua / Wali Murid Kelas VI" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Perihal Surat *</label>
+            <input type="text" id="inpPerihal" class="input-field" placeholder="Contoh: Pemberitahuan Kegiatan Ujian Sekolah" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Ringkasan Isi / Catatan</label>
+            <textarea id="inpKeterangan" class="textarea-field" placeholder="Ringkasan atau tindak lanjut surat keluar..."></textarea>
+          </div>
+        `;
+      } else if (category === 'SURAT_KET_KS') {
+        formTitle.innerText = 'Input Surat Keterangan Kepala Sekolah';
+        dynamicContainer.innerHTML = `
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label class="form-label">Nomor Surat Keterangan *</label>
+              <input type="text" id="inpNoSurat" class="input-field" placeholder="Contoh: 421.2/SKT/012/2026" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Tanggal Surat *</label>
+              <input type="date" id="inpTglSurat" class="input-field" value="${todayStr}" required>
+            </div>
+          </div>
+
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label class="form-label">Nama Siswa / Guru / Penerima *</label>
+              <input type="text" id="inpNamaPenerima" class="input-field" placeholder="Nama lengkap siswa atau guru" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">NISN / NIP / NIK *</label>
+              <input type="text" id="inpIdentitas" class="input-field" placeholder="Nomor identitas penerima" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Perihal / Jenis Keterangan *</label>
+            <input type="text" id="inpPerihal" class="input-field" placeholder="Contoh: Surat Keterangan Aktif Belajar / Pindah Sekolah / Berkelakuan Baik" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Keperluan / Keterangan Tambahan</label>
+            <textarea id="inpKeterangan" class="textarea-field" placeholder="Keperluan surat keterangan (contoh: Pendaftaran Beasiswa KJP Plus)..."></textarea>
+          </div>
+        `;
+      } else if (category === 'SURAT_TUGAS') {
+        formTitle.innerText = 'Input Surat Tugas';
+        dynamicContainer.innerHTML = `
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label class="form-label">Nomor Surat Tugas *</label>
+              <input type="text" id="inpNoSurat" class="input-field" placeholder="Contoh: 800/ST/032/2026" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Tanggal Surat *</label>
+              <input type="date" id="inpTglSurat" class="input-field" value="${todayStr}" required>
+            </div>
+          </div>
+
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label class="form-label">Nama Petugas / Guru yang Ditugaskan *</label>
+              <input type="text" id="inpNamaPetugas" class="input-field" placeholder="Contoh: Rina Rahmawati, S.Pd." required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">NIP / NUPTK / Jabatan *</label>
+              <input type="text" id="inpIdentitas" class="input-field" placeholder="Contoh: Guru Kelas V / Operator Dapodik" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Tugas / Kegiatan yang Dilaksanakan *</label>
+            <input type="text" id="inpKegiatan" class="input-field" placeholder="Contoh: Mengikuti Bimtek Implementasi Kurikulum Merdeka" required>
+          </div>
+
+          <div class="form-grid-3">
+            <div class="form-group">
+              <label class="form-label">Lokasi Penugasan *</label>
+              <input type="text" id="inpLokasi" class="input-field" placeholder="Contoh: Aula Sudin Pendidikan Jaktim" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Tanggal Mulai *</label>
+              <input type="date" id="inpTglMulai" class="input-field" value="${todayStr}" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Tanggal Selesai *</label>
+              <input type="date" id="inpTglSelesai" class="input-field" value="${todayStr}" required>
+            </div>
+          </div>
+        `;
+      }
+    }
+
+    function handleFileSelected(e) {
+      const file = e.target.files[0];
+      if (!file) return;
+
+      if (file.size > 15 * 1024 * 1024) {
+        showToast('Ukuran berkas terlalu besar! Maksimal 15 MB.', false);
+        e.target.value = '';
+        return;
+      }
+
+      APP_STATE.selectedFileName = file.name;
+      APP_STATE.selectedFileType = file.type || 'application/octet-stream';
+
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        const base64Data = event.target.result.split(',')[1];
+        APP_STATE.selectedFileBase64 = base64Data;
+
+        const previewPill = document.getElementById('filePreviewPill');
+        const nameLabel = document.getElementById('fileNameLabel');
+        const fileSizeMB = (file.size / (1024 * 1024)).toFixed(2);
+        
+        nameLabel.innerText = file.name + ' (' + fileSizeMB + ' MB)';
+        previewPill.style.display = 'inline-flex';
+      };
+      reader.readAsDataURL(file);
+    }
+
+    function removeSelectedFile() {
+      APP_STATE.selectedFileBase64 = null;
+      APP_STATE.selectedFileName = '';
+      APP_STATE.selectedFileType = '';
+      document.getElementById('letterFileInput').value = '';
+      document.getElementById('filePreviewPill').style.display = 'none';
+    }
+
+    function resetFilePill() {
+      removeSelectedFile();
+    }
+
+    function handleSaveLetter(e) {
+      e.preventDefault();
+      const category = document.getElementById('formCategory').value;
+
+      const formData = {
+        adminName: APP_STATE.currentUser ? APP_STATE.currentUser.fullName : 'Admin Operator'
+      };
+
+      if (category === 'SURAT_MASUK') {
+        formData.noAgenda = document.getElementById('inpNoAgenda').value.trim();
+        formData.noSurat = document.getElementById('inpNoSurat').value.trim();
+        formData.tglSurat = document.getElementById('inpTglSurat').value;
+        formData.tglDiterima = document.getElementById('inpTglDiterima').value;
+        formData.pengirim = document.getElementById('inpPengirim').value.trim();
+        formData.perihal = document.getElementById('inpPerihal').value.trim();
+        formData.keterangan = document.getElementById('inpKeterangan').value.trim();
+      } else if (category === 'SURAT_KELUAR') {
+        formData.noAgenda = document.getElementById('inpNoAgenda').value.trim();
+        formData.noSurat = document.getElementById('inpNoSurat').value.trim();
+        formData.tglSurat = document.getElementById('inpTglSurat').value;
+        formData.tujuan = document.getElementById('inpTujuan').value.trim();
+        formData.perihal = document.getElementById('inpPerihal').value.trim();
+        formData.keterangan = document.getElementById('inpKeterangan').value.trim();
+      } else if (category === 'SURAT_KET_KS') {
+        formData.noSurat = document.getElementById('inpNoSurat').value.trim();
+        formData.tglSurat = document.getElementById('inpTglSurat').value;
+        formData.namaPenerima = document.getElementById('inpNamaPenerima').value.trim();
+        formData.identitas = document.getElementById('inpIdentitas').value.trim();
+        formData.perihal = document.getElementById('inpPerihal').value.trim();
+        formData.keterangan = document.getElementById('inpKeterangan').value.trim();
+      } else if (category === 'SURAT_TUGAS') {
+        formData.noSurat = document.getElementById('inpNoSurat').value.trim();
+        formData.tglSurat = document.getElementById('inpTglSurat').value;
+        formData.namaPetugas = document.getElementById('inpNamaPetugas').value.trim();
+        formData.identitas = document.getElementById('inpIdentitas').value.trim();
+        formData.kegiatan = document.getElementById('inpKegiatan').value.trim();
+        formData.lokasi = document.getElementById('inpLokasi').value.trim();
+        formData.tglMulai = document.getElementById('inpTglMulai').value;
+        formData.tglSelesai = document.getElementById('inpTglSelesai').value;
+      }
+
+      let fileObj = null;
+      if (APP_STATE.selectedFileBase64) {
+        fileObj = {
+          base64: APP_STATE.selectedFileBase64,
+          filename: APP_STATE.selectedFileName,
+          mimeType: APP_STATE.selectedFileType
+        };
+      }
+
+      showLoading('Menyimpan Data...', 'Mengunggah berkas ke subfolder Google Drive dan mencatat baris di Spreadsheet');
+
+      callBackendApi('saveSurat', { category, formData, fileObj })
+        .then(res => {
+          hideLoading();
+          if (res && res.success) {
+            showToast('Data surat berhasil disimpan!');
+            resetFilePill();
+            switchTab('dashboard');
+            fetchDashboardData();
+          } else {
+            showToast(res.message || 'Gagal menyimpan data.', false);
+          }
+        })
+        .catch(err => {
+          hideLoading();
+          showToast('Terjadi kesalahan: ' + err.message, false);
+        });
+    }
+
+    function applyRekapFilter() {
+      const cat = document.getElementById('filterCategory').value;
+      const month = document.getElementById('filterMonth').value;
+      const year = document.getElementById('filterYear').value;
+      const keyword = document.getElementById('filterKeyword').value.trim();
+
+      const filterObj = {
+        category: cat,
+        month: month,
+        year: year,
+        keyword: keyword
+      };
+
+      callBackendApi('getRekap', { filterObj })
+        .then(res => {
+          if (res && res.success) {
+            APP_STATE.allRekapRecords = res.records || [];
+            renderRekapResults(res);
+          }
+        })
+        .catch(err => {
+          showToast('Gagal memfilter rekapan: ' + err.message, false);
+        });
+    }
+
+    function filterByCatAndSwitch(category) {
+      document.getElementById('filterCategory').value = category;
+      switchTab('rekap');
+    }
+
+    function renderRekapResults(res) {
+      const records = res.records || [];
+      const summary = res.summary || { TOTAL: 0, SURAT_MASUK: 0, SURAT_KELUAR: 0, SURAT_KET_KS: 0, SURAT_TUGAS: 0 };
+
+      document.getElementById('rekapCountTotal').innerText = summary.TOTAL;
+      document.getElementById('rekapCountMasuk').innerText = summary.SURAT_MASUK;
+      document.getElementById('rekapCountKeluar').innerText = summary.SURAT_KELUAR;
+      document.getElementById('rekapCountKet').innerText = summary.SURAT_KET_KS;
+      document.getElementById('rekapCountTugas').innerText = summary.SURAT_TUGAS;
+
+      const tbody = document.getElementById('rekapTableBody');
+      const mobileList = document.getElementById('rekapMobileList');
+      tbody.innerHTML = '';
+      mobileList.innerHTML = '';
+
+      if (records.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="8" class="empty-state"><i class="fa-solid fa-file-circle-xmark"></i><h4>Tidak ada arsip surat yang sesuai dengan filter</h4><p>Silakan sesuaikan bulan, tahun, atau kata kunci pencarian.</p></td></tr>';
+        mobileList.innerHTML = '<div class="empty-state"><i class="fa-solid fa-file-circle-xmark"></i><h4>Tidak ada data</h4></div>';
+        return;
+      }
+
+      records.forEach((item, idx) => {
+        const badgeClass = getBadgeClass(item.category);
+        const fileLink = getFileBadgeIcon(item.fileName, item.fileUrl);
+
+        // Desktop Row
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td style="text-align: center; color: #64748b;">${idx + 1}</td>
+          <td><span class="badge-cat ${badgeClass}">${item.categoryName}</span></td>
+          <td><strong>${escapeHtml(item.noSurat)}</strong></td>
+          <td>${item.tanggal}</td>
+          <td>${escapeHtml(item.pihakTerkait)}</td>
+          <td>
+            <strong>${escapeHtml(item.perihal)}</strong>
+            <div style="font-size: 0.76rem; color: #64748b; margin-top: 2px;">${escapeHtml(item.keterangan)}</div>
+          </td>
+          <td>${fileLink}</td>
+          <td style="text-align: right;">
+            <div class="action-btns" style="justify-content: flex-end;">
+              <button class="btn-action view" onclick="viewLetterDetail('${item.category}', '${item.id}')" title="Lihat">
+                <i class="fa-solid fa-eye"></i>
+              </button>
+              <button class="btn-action delete" onclick="confirmDeleteLetter('${item.category}', '${item.id}')" title="Hapus">
+                <i class="fa-solid fa-trash-can"></i>
+              </button>
+            </div>
+          </td>
+        `;
+        tbody.appendChild(tr);
+
+        // Mobile Card
+        const mcard = document.createElement('div');
+        mcard.className = 'm-letter-card';
+        mcard.innerHTML = `
+          <div class="m-card-header">
+            <span class="badge-cat ${badgeClass}">${item.categoryName}</span>
+            <small style="color: #64748b;">${item.tanggal}</small>
+          </div>
+          <div class="m-card-title">${escapeHtml(item.noSurat)}</div>
+          <div class="m-card-sub">
+            <div><strong>Terkait:</strong> ${escapeHtml(item.pihakTerkait)}</div>
+            <div><strong>Perihal:</strong> ${escapeHtml(item.perihal)}</div>
+          </div>
+          <div class="m-card-footer">
+            <div>${fileLink}</div>
+            <div class="action-btns">
+              <button class="btn-action view" onclick="viewLetterDetail('${item.category}', '${item.id}')">
+                <i class="fa-solid fa-eye"></i>
+              </button>
+              <button class="btn-action delete" onclick="confirmDeleteLetter('${item.category}', '${item.id}')">
+                <i class="fa-solid fa-trash-can"></i>
+              </button>
+            </div>
+          </div>
+        `;
+        mobileList.appendChild(mcard);
+      });
+    }
+
+    function viewLetterDetail(category, id) {
+      const record = APP_STATE.allRekapRecords.find(r => r.id === id) || APP_STATE.recentLetters.find(r => r.id === id);
+      const modalContent = document.getElementById('modalDetailContent');
+      const btnOpen = document.getElementById('btnModalOpenFile');
+
+      if (!record) {
+        modalContent.innerHTML = '<p class="empty-state">Data tidak dapat dimuat secara lokal.</p>';
+        document.getElementById('detailModal').style.display = 'flex';
+        return;
+      }
+
+      let html = `
+        <div class="detail-row"><div class="detail-label">ID Sistem</div><div class="detail-val"><code>${record.id}</code></div></div>
+        <div class="detail-row"><div class="detail-label">Kategori Surat</div><div class="detail-val"><span class="badge-cat ${getBadgeClass(record.category)}">${record.categoryName || record.category}</span></div></div>
+        <div class="detail-row"><div class="detail-label">Nomor Surat</div><div class="detail-val"><strong>${escapeHtml(record.noSurat || record.nomorSurat)}</strong></div></div>
+        <div class="detail-row"><div class="detail-label">Tanggal Surat</div><div class="detail-val">${record.tanggal || record.tanggalSurat}</div></div>
+        <div class="detail-row"><div class="detail-label">Pihak Terkait</div><div class="detail-val">${escapeHtml(record.pihakTerkait || '-')}</div></div>
+        <div class="detail-row"><div class="detail-label">Perihal</div><div class="detail-val">${escapeHtml(record.perihal || '-')}</div></div>
+        <div class="detail-row"><div class="detail-label">Keterangan / Isi</div><div class="detail-val">${escapeHtml(record.keterangan || '-')}</div></div>
+        <div class="detail-row"><div class="detail-label">Nama Berkas</div><div class="detail-val">${escapeHtml(record.fileName || 'Tidak Ada Berkas')}</div></div>
+      `;
+
+      modalContent.innerHTML = html;
+
+      if (record.fileUrl) {
+        btnOpen.style.display = 'inline-flex';
+        btnOpen.href = record.fileUrl;
+      } else {
+        btnOpen.style.display = 'none';
+      }
+
+      document.getElementById('detailModal').style.display = 'flex';
+    }
+
+    function closeDetailModal() {
+      document.getElementById('detailModal').style.display = 'none';
+    }
+
+    function confirmDeleteLetter(category, id) {
+      if (!confirm('Apakah Anda yakin ingin menghapus arsip surat ini? Berkas di Google Drive juga akan dipindahkan ke sampah.')) {
+        return;
+      }
+
+      showLoading('Menghapus Data...', 'Menghapus baris dari Spreadsheet & memindahkan berkas Drive ke sampah');
+
+      callBackendApi('deleteLetter', { category, id })
+        .then(res => {
+          hideLoading();
+          if (res && res.success) {
+            showToast('Surat berhasil dihapus!');
+            fetchDashboardData();
+            applyRekapFilter();
+          } else {
+            showToast(res.message || 'Gagal menghapus.', false);
+          }
+        })
+        .catch(err => {
+          hideLoading();
+          showToast('Kesalahan sistem: ' + err.message, false);
+        });
+    }
+
+    function printRekapLaporan() {
+      const records = APP_STATE.allRekapRecords;
+      if (!records || records.length === 0) {
+        showToast('Tidak ada data surat untuk dicetak pada filter saat ini!', false);
+        return;
+      }
+
+      const tbody = document.getElementById('printTableBody');
+      tbody.innerHTML = '';
+
+      records.forEach((item, idx) => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td style="text-align: center;">${idx + 1}</td>
+          <td>${item.categoryName}</td>
+          <td>${item.noSurat}</td>
+          <td style="text-align: center;">${item.tanggal}</td>
+          <td>${item.pihakTerkait}</td>
+          <td>${item.perihal}</td>
+          <td style="text-align: center;">${item.fileUrl ? 'Tersedia di Drive' : 'Tanpa Berkas'}</td>
+        `;
+        tbody.appendChild(tr);
+      });
+
+      const selCat = document.getElementById('filterCategory').options[document.getElementById('filterCategory').selectedIndex].text;
+      const selMonth = document.getElementById('filterMonth').options[document.getElementById('filterMonth').selectedIndex].text;
+      const selYear = document.getElementById('filterYear').value || 'Semua Tahun';
+      document.getElementById('printSubPeriod').innerText = `Kategori: ${selCat} | Periode: ${selMonth} ${selYear}`;
+
+      const months = ['Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember'];
+      const now = new Date();
+      document.getElementById('printDateNow').innerText = 'Jakarta, ' + now.getDate() + ' ' + months[now.getMonth()] + ' ' + now.getFullYear();
+
+      window.print();
+    }
+
+    function previewImageFile(e, imgElemId) {
+      const file = e.target.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = (evt) => {
+        document.getElementById(imgElemId).src = evt.target.result;
+        const b64 = evt.target.result.split(',')[1];
+        if (imgElemId === 'prevLogoDash') {
+          APP_STATE.logoDashBase64 = { base64: b64, filename: file.name, mimeType: file.type };
+        } else if (imgElemId === 'prevLogoKop') {
+          APP_STATE.logoKopBase64 = { base64: b64, filename: file.name, mimeType: file.type };
+        }
+      };
+      reader.readAsDataURL(file);
+    }
+
+    function handleSaveSettings(e) {
+      e.preventDefault();
+
+      const configData = {
+        NAMA_SEKOLAH: document.getElementById('cfgSchoolName').value.trim(),
+        ALAMAT_SEKOLAH: document.getElementById('cfgSchoolAddress').value.trim(),
+        NPSN: document.getElementById('cfgNpsn').value.trim(),
+        EMAIL_SEKOLAH: document.getElementById('cfgEmail').value.trim(),
+        NAMA_KS: document.getElementById('cfgKsName').value.trim(),
+        NIP_KS: document.getElementById('cfgKsNip').value.trim(),
+        NAMA_ADMIN: document.getElementById('cfgAdminName').value.trim(),
+        NIP_ADMIN: document.getElementById('cfgAdminNip').value.trim()
+      };
+
+      const newPass = document.getElementById('cfgNewPassword').value.trim();
+      const updatedGasUrl = document.getElementById('cfgGasUrl').value.trim();
+      if (updatedGasUrl !== gasApiUrl) {
+        gasApiUrl = updatedGasUrl;
+        localStorage.setItem('si_surat_api_url', updatedGasUrl);
+        initApiConnectionState();
+      }
+
+      showLoading('Menyimpan Pengaturan...', 'Memperbarui data sekolah, logo, dan identitas di Google Spreadsheet & Google Drive');
+
+      callBackendApi('saveSettings', {
+        configData,
+        logoDashFile: APP_STATE.logoDashBase64,
+        logoKopFile: APP_STATE.logoKopBase64
+      })
+      .then(res => {
+        if (res && res.success) {
+          if (newPass && APP_STATE.currentUser) {
+            callBackendApi('changePassword', {
+              username: APP_STATE.currentUser.username,
+              oldPassword: 'admin123',
+              newPassword: newPass
+            })
+            .then(() => {
+              hideLoading();
+              showToast('Pengaturan & password berhasil disimpan!');
+              document.getElementById('cfgNewPassword').value = '';
+              fetchDashboardData();
+            });
+          } else {
+            hideLoading();
+            showToast('Pengaturan berhasil disimpan!');
+            fetchDashboardData();
+          }
+        } else {
+          hideLoading();
+          showToast(res.message || 'Gagal menyimpan pengaturan.', false);
+        }
+      })
+      .catch(err => {
+        hideLoading();
+        showToast('Kesalahan sistem: ' + err.message, false);
+      });
+    }
+
+    function escapeHtml(text) {
+      if (!text) return '';
+      return String(text)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+    }
+
+    function handleOfflineMock(action, data, resolve, reject) {
+      setTimeout(() => {
+        if (action === 'login') {
+          if (data.username === 'admin' && data.password === 'admin123') {
+            resolve({
+              success: true,
+              user: { id: 'USR-001', username: 'admin', fullName: 'Operator SDN 03 Pagi', role: 'Admin' }
+            });
+          } else {
+            resolve({ success: false, message: 'Username / password salah!' });
+          }
+        } else if (action === 'getInitialData') {
+          resolve({
+            success: true,
+            stats: { masuk: 12, keluar: 8, ketKs: 15, tugas: 6 },
+            settings: APP_STATE.settings,
+            years: [2026, 2025],
+            recent: [
+              { id: 'SM-20261016-0001', category: 'SURAT_MASUK', categoryName: 'Surat Masuk', nomorSurat: '421.2/120/DISDIK/2026', tanggalSurat: '15 Oktober 2026', perihal: 'Undangan Bimtek Pengelolaan Arsip Digital', fileName: 'Undangan_Bimtek.pdf', fileUrl: '#' },
+              { id: 'SK-20261014-0002', category: 'SURAT_KELUAR', categoryName: 'Surat Keluar', nomorSurat: '421.2/045/SDN03/2026', tanggalSurat: '14 Oktober 2026', perihal: 'Pemberitahuan Kegiatan ANBK Siswa Kelas V', fileName: 'Surat_ANBK_2026.docx', fileUrl: '#' },
+              { id: 'SKT-20261012-0003', category: 'SURAT_KET_KS', categoryName: 'Surat Keterangan KS', nomorSurat: '421.2/SKT/032/2026', tanggalSurat: '12 Oktober 2026', perihal: 'Surat Keterangan Aktif Belajar Siswa', fileName: 'SrtKet_Aktif_Belajar.pdf', fileUrl: '#' },
+              { id: 'STG-20261010-0004', category: 'SURAT_TUGAS', categoryName: 'Surat Tugas', nomorSurat: '800/ST/018/2026', tanggalSurat: '10 Oktober 2026', perihal: 'Tugas Pendampingan Lomba OSN Tingkat Kota', fileName: 'Surat_Tugas_OSN.pdf', fileUrl: '#' }
+            ]
+          });
+        } else if (action === 'getRekap') {
+          resolve({
+            success: true,
+            summary: { TOTAL: 4, SURAT_MASUK: 1, SURAT_KELUAR: 1, SURAT_KET_KS: 1, SURAT_TUGAS: 1 },
+            records: [
+              { id: 'SM-20261016-0001', category: 'SURAT_MASUK', categoryName: 'Surat Masuk', noSurat: '421.2/120/DISDIK/2026', tanggal: '15 Oktober 2026', pihakTerkait: 'Dinas Pendidikan DKI Jakarta', perihal: 'Undangan Bimtek Pengelolaan Arsip Digital', keterangan: 'Harap dihadiri operator sekolah', fileName: 'Undangan_Bimtek.pdf', fileUrl: '#' },
+              { id: 'SK-20261014-0002', category: 'SURAT_KELUAR', categoryName: 'Surat Keluar', noSurat: '421.2/045/SDN03/2026', tanggal: '14 Oktober 2026', pihakTerkait: 'Orang Tua / Wali Kelas V', perihal: 'Pemberitahuan Kegiatan ANBK Siswa Kelas V', keterangan: 'Dibagikan kepada seluruh siswa', fileName: 'Surat_ANBK_2026.docx', fileUrl: '#' },
+              { id: 'SKT-20261012-0003', category: 'SURAT_KET_KS', categoryName: 'Surat Keterangan KS', noSurat: '421.2/SKT/032/2026', tanggal: '12 Oktober 2026', pihakTerkait: 'Muhammad Farhan (NISN: 0123456789)', perihal: 'Surat Keterangan Aktif Belajar Siswa', keterangan: 'Untuk kelengkapan berkas beasiswa', fileName: 'SrtKet_Aktif_Belajar.pdf', fileUrl: '#' },
+              { id: 'STG-20261010-0004', category: 'SURAT_TUGAS', categoryName: 'Surat Tugas', noSurat: '800/ST/018/2026', tanggal: '10 Oktober 2026', pihakTerkait: 'Rina Rahmawati, S.Pd. (Guru Kelas V)', perihal: 'Tugas Pendampingan OSN @ Aula Sudin Jaktim', keterangan: 'Tgl: 10 Oktober 2026 s/d 11 Oktober 2026', fileName: 'Surat_Tugas_OSN.pdf', fileUrl: '#' }
+            ]
+          });
+        } else if (action === 'saveSurat') {
+          resolve({ success: true, message: 'Data surat berhasil disimpan secara lokal!' });
+        } else if (action === 'deleteLetter') {
+          resolve({ success: true, message: 'Data berhasil dihapus dari preview!' });
+        } else if (action === 'saveSettings') {
+          resolve({ success: true, message: 'Pengaturan berhasil disimpan!' });
+        } else {
+          resolve({ success: true });
+        }
+      }, 500);
+    }
+  </script>
+</body>
+</html>
